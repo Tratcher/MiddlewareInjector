@@ -25,9 +25,49 @@ namespace MiddlewareInjector
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) =>
+            var injectorOptions = new MiddlewareInjectorOptions();
+
+            app.UseMiddlewareInjector(injectorOptions);
+
+            app.Run(async context =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                context.Response.ContentType = "text/html";
+                await context.Response.WriteAsync("<html><body>");
+                if (context.Request.Path.Equals("/clear"))
+                {
+                    injectorOptions.InjectMiddleware(_ => { });
+                    await context.Response.WriteAsync("Cleared middleware<br>");
+                }
+                else if (context.Request.Path.Equals("/inject"))
+                {
+                    injectorOptions.InjectMiddleware(InjectContent);
+
+                    await context.Response.WriteAsync("Injected middleware<br>");
+                }
+                else
+                {
+                    await context.Response.WriteAsync("Hello World!<br>");
+                }
+                await context.Response.WriteAsync("<a href=\"/inject\">Inject</a><br>");
+                await context.Response.WriteAsync("<a href=\"/testpath\">Test Path</a><br>");
+                await context.Response.WriteAsync("<a href=\"/clear\">Clear</a><br>");
+                await context.Response.WriteAsync("<a href=\"/\">Home</a><br>");
+                await context.Response.WriteAsync("</body></html>");
+            });
+        }
+
+        public void InjectContent(IApplicationBuilder builder)
+        {
+            builder.Map("/testpath", subBuilder =>
+            {
+                subBuilder.Run(async context =>
+                {
+                    context.Response.ContentType = "text/html";
+                    await context.Response.WriteAsync("<html><body>");
+                    await context.Response.WriteAsync("Injected content<br>");
+                    await context.Response.WriteAsync("<a href=\"/\">Home</a><br>");
+                    await context.Response.WriteAsync("</body></html>");
+                });
             });
         }
     }
