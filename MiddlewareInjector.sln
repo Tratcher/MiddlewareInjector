@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiddlewareInjector", "MiddlewareInjector\MiddlewareInjector.csproj", "{749D6E79-3974-4BFD-AB61-0D0C499960FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiddlewareInjector", "MiddlewareInjector\MiddlewareInjector.csproj", "{749D6E79-3974-4BFD-AB61-0D0C499960FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiddlewareInjector.Owin", "MiddlewareInjector.Owin\MiddlewareInjector.Owin.csproj", "{AC90B4CC-20B9-4064-8DDB-234D9BC11EE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{749D6E79-3974-4BFD-AB61-0D0C499960FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{749D6E79-3974-4BFD-AB61-0D0C499960FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{749D6E79-3974-4BFD-AB61-0D0C499960FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC90B4CC-20B9-4064-8DDB-234D9BC11EE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC90B4CC-20B9-4064-8DDB-234D9BC11EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC90B4CC-20B9-4064-8DDB-234D9BC11EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC90B4CC-20B9-4064-8DDB-234D9BC11EE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
